@@ -1,7 +1,7 @@
 
 import styled from "styled-components"
-import pesquisa from './assets/search.png';
-import pin from './assets/pin.png'
+import pesquisa from './asserts/search.png';
+import pin from './asserts/pin.png'
 
 
 interface Props {

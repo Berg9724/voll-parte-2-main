@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import escudo from './assets/escudo.png'
-import calendario from './assets/calendario.png'
-import like from './assets/like.png'
-import sino from './assets/sino.png'
+import escudo from './asserts/escudo.png'
+import calendario from './asserts/calendario.png'
+import like from './asserts/like.png'
+import sino from './asserts/sino.png'
 
 
 const Container = styled.section`
