@@ -1,30 +1,45 @@
-import { useState } from "react";
-import CampoDigitacao from "../../components/CampoDigitacao";
-import Logo from "./Logo.png"
-import Titulo from "../../components/Titulo";
-import Formulario from "../PaginaInicial/Pesquisa";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import {CampoDigitacao} from "../../components/CampoDigitacao";
+import Logo from '../../components/Logo/Logo.png';
+import Botao from '../../components/Botao';
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center;
+  min-height: 100vh; 
+  padding: 10em; 
+`;
 
-const Imagem = styled.img`
+const ImagemEstilizada = styled.img`
   padding: 2em 0;
+  display: block;
+  margin: 0 auto; 
 `;
 
 const Titulo = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  color: var(--cinza)
-`;
-
-const Paragrafo = styled.p`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  color: var(--azul-escuro)
-`;
-
-const ParagrafoCadastro = styled(Paragrafo)`
   color: var(--cinza);
+  text-align: center;
+`;
+
+const FormularioEstilizado = styled.form`
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  padding: 1em 0; 
+`;
+
+const ParagrafoCadastro = styled.p`
+  color: var(--cinza);
+  text-align: center; /* Centraliza o parágrafo */
 `;
 
 const LinkCustomizado = styled(Link)`
@@ -33,33 +48,36 @@ const LinkCustomizado = styled(Link)`
   text-decoration: none;
 `;
 
-const Formulario = styled.form`
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const BotaoCustomizado = styled(Botao)`
-  width: 50%;
-`;
-
-
-
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-   
+
     return (
-   <>
-   <Imagem src={logo} alt="Logo da Voll" />
-               <Titulo>Faça login em sua conta</Titulo>
-               <Formulario>
-                   <CampoDigitacao tipo="email" label="Email" value={email} placeholder="Insira seu endereço de email" onChange={setEmail} />
-                   <CampoDigitacao tipo="password" label="Senha" value={senha} placeholder="Insira sua senha" onChange={setSenha} />
-                   <BotaoCustomizado type="submit">Entrar</BotaoCustomizado>
-               </Formulario>
-               <Paragrafo>Esqueceu sua senha?</Paragrafo>
-               <ParagrafoCadastro>Ainda não tem conta? <LinkCustomizado to="/cadastro">Faça seu cadastro!</LinkCustomizado></ParagrafoCadastro>
-           </>
-   )}
+      <Container>
+        <ImagemEstilizada src={Logo} alt="Logo" /> {/* Certifique-se de que a imagem é referenciada corretamente */}
+        <Titulo>Faça login em sua conta</Titulo>
+        <FormularioEstilizado>
+          <CampoDigitacao 
+            valor={email}
+            tipo="text"
+            placeholder="Insira seu endereço de email"
+            onChange={(e) => setEmail(e.target.value)}
+            label="Email"
+          />
+          <CampoDigitacao 
+            valor={senha}
+            tipo="password"
+            placeholder="Insira a sua senha"
+            onChange={(e) => setEmail(e.target.value)}
+            label="Senha"
+          />
+          <Botao type="submit">Entrar</Botao>
+        </FormularioEstilizado>
+        <p style={{ textAlign: 'center' }}>Esqueceu sua senha?</p>
+        <ParagrafoCadastro>
+          Ainda não tem conta? 
+          <LinkCustomizado to="/cadastro">Faça seu cadastro!</LinkCustomizado>
+        </ParagrafoCadastro>
+      </Container>
+    );
+}
